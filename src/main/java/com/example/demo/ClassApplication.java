@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,17 +26,13 @@ public class ClassApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Order order1034 = new Order(1034, BigDecimal.valueOf(150), 0.2);
-		Order order2282 = new Order(2282, BigDecimal.valueOf(800), 0.1);
-		Order order1309 = new Order(1309, BigDecimal.valueOf(95.9), 0);
+		List<Order> orders = new ArrayList<>();
+		orders.add(new Order(1034, BigDecimal.valueOf(150), 0.2));
+		orders.add(new Order(2282, BigDecimal.valueOf(800), 0.1));
+		orders.add(new Order(1309, BigDecimal.valueOf(95.9), 0));
 
-		System.out.println("Pedido Código: " + order1034.getCode() + "\n Valor Total: R$ "
-				+ orderService.total(order1034).setScale(2) + "\n");
-		System.out.println("Pedido Código: " + order2282.getCode() + "\n Valor Total: R$ "
-				+ orderService.total(order2282).setScale(2) + "\n");
-		System.out.println("Pedido Código: " + order1309.getCode() + "\n Valor Total: R$ "
-				+ orderService.total(order1309).setScale(2) + "\n");
-
+		orders.stream().forEach(o -> System.out.println(
+				"Pedido Código: " + o.getCode() + "\n Valor Total: R$ " + orderService.total(o).setScale(2) + "\n"));
 	}
 
 }
