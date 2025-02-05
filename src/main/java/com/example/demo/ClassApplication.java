@@ -32,7 +32,7 @@ public class ClassApplication implements CommandLineRunner {
 		orders.add(new Order(1309, BigDecimal.valueOf(95.9), 0));
 
 		orders.stream().forEach(o -> System.out.println(
-				"Pedido Código: " + o.getCode() + "\n Valor Total: R$ " + orderService.total(o).setScale(2) + "\n"));
+				"Pedido Código: " + o.getCode() + "\nValor Total: R$ " + orderService.total(o).setScale(2) + "\n"));
 	}
 
 }
